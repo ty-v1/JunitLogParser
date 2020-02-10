@@ -36,7 +36,7 @@ public class TestSuite {
   private List<TestCase> testCases;
 
   public String getContest() {
-    final Matcher matcher = Pattern.compile("ABC\\d+")
+    final Matcher matcher = Pattern.compile("ABC(\\d+)")
         .matcher(name);
     matcher.find();
     return matcher.group(1);
