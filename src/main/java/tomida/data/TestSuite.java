@@ -39,7 +39,7 @@ public class TestSuite {
     final Matcher matcher = Pattern.compile("ABC(\\d+)")
         .matcher(name);
     matcher.find();
-    return matcher.group(1);
+    return "abc" + matcher.group(1);
   }
 
   public String getClassname() {
