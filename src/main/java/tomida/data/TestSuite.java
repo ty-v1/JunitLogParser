@@ -36,20 +36,24 @@ public class TestSuite {
   private List<TestCase> testCases;
 
   public String getContest() {
-    return name.split("\\.")[1];
+    final Matcher matcher = Pattern.compile("ABC\\d+")
+        .matcher(name);
+    matcher.find();
+    return matcher.group(1);
+  }
+
+  public String getClassname() {
+    final String[] names = name.split("\\.");
+    return names[names.length - 1];
   }
 
   public int getSeed() {
-    final Matcher matcher = Pattern.compile("Seed[0-9]+")
-        .matcher(name);
-    matcher.find();
-    final String matched = matcher.group(0);
-
-    return Integer.parseInt(matched.replace("Seed", ""));
+    final String classname = getClassname();
+    return Integer.parseInt(classname.split("_")[1]);
   }
 
   public String getDepth() {
-    final Matcher matcher = Pattern.compile("Depth(shallow|normal|deep)")
+    final Matcher matcher = Pattern.compile("(shallow|normal|deep)")
         .matcher(name);
     matcher.find();
     return matcher.group(1);
