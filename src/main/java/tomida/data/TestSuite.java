@@ -52,21 +52,9 @@ public class TestSuite {
     return Integer.parseInt(classname.split("_")[1]);
   }
 
-  public String getDepth() {
-    final Matcher matcher = Pattern.compile("(shallow|normal|deep)")
-        .matcher(name);
-    matcher.find();
-    return matcher.group(1);
-  }
-
-  public int getMutationGeneratingCount() {
-    if (name.contains("deep")) {
-      return 40;
-    } else if (name.contains("normal")) {
-      return 100;
-    } else {
-      return 400;
-    }
+  public int getHeadcount() {
+    final String classname = getClassname();
+    return Integer.parseInt(classname.split("_")[2]);
   }
 
   public boolean isSucceeded() {
@@ -75,7 +63,7 @@ public class TestSuite {
 
   @Override
   public String toString() {
-    return String.format("%s,%d,%d,%b", getContest(), getSeed(), getMutationGeneratingCount(),
+    return String.format("%s,%d,%d,%b", getContest(), getSeed(), getHeadcount() * 10,
         isSucceeded());
   }
 }

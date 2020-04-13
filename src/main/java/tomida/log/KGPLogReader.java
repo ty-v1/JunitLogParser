@@ -16,8 +16,8 @@ public class KGPLogReader {
   public List<String> readLog(final TestSuite testSuite, final String date) {
     final String contest = testSuite.getContest();
     final int seed = testSuite.getSeed();
-    final String depth = testSuite.getDepth();
-    final String logFileName = String.format("%s-%s-%d-%s.log", date, contest, seed, depth);
+    final int headcount = testSuite.getHeadcount();
+    final String logFileName = String.format("%s-%s-%d-%d.log", date, contest, seed, headcount);
     final Path logFile = rootDir.resolve(logFileName);
 
     try {
