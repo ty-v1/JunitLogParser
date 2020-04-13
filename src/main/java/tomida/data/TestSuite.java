@@ -14,8 +14,6 @@ import lombok.Data;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class TestSuite {
 
-  private static final Pattern PATTERN = Pattern.compile("(Seed[0-9]+)");
-
   @JacksonXmlProperty(localName = "name", isAttribute = true)
   private String name;
 
