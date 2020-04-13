@@ -20,7 +20,7 @@ public class Runner {
   }
 
   public void writeToFile(final Path outDir, final String contest,
-      final TestSuite testSuite) throws IOException {
+      final TestSuite testSuite, final String date) throws IOException {
     if (Files.notExists(outDir)) {
       Files.createDirectories(outDir);
     }
@@ -29,7 +29,7 @@ public class Runner {
     final BufferedWriter writer = Files.newBufferedWriter(outFile, StandardOpenOption.CREATE,
         StandardOpenOption.APPEND);
     //
-    final List<String> log = kgpLogReader.readLog(testSuite);
+    final List<String> log = kgpLogReader.readLog(testSuite, date);
     final double time = kgpLogParser.getExecTime(log)
         .orElse(0.0d);
     final int maxGeneration = kgpLogParser.getMaxGeneration(log)

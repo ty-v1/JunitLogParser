@@ -13,11 +13,11 @@ public class KGPLogReader {
 
   private final Path rootDir;
 
-  public List<String> readLog(final TestSuite testSuite) {
+  public List<String> readLog(final TestSuite testSuite, final String date) {
     final String contest = testSuite.getContest();
     final int seed = testSuite.getSeed();
     final String depth = testSuite.getDepth();
-    final String logFileName = String.format("20200114-%s-%d-%s.log", contest, seed, depth);
+    final String logFileName = String.format("%s-%s-%d-%s.log", date, contest, seed, depth);
     final Path logFile = rootDir.resolve(logFileName);
 
     try {

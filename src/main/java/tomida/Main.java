@@ -18,6 +18,7 @@ public class Main {
     try {
       final Path inDir = Paths.get(args[0]);
       final Path outDir = Paths.get(args[1]);
+      final String date = args[2];
       //
       final List<Path> logs = Files.walk(inDir, FileVisitOption.FOLLOW_LINKS)
           .filter(e -> !Files.isDirectory(e))
@@ -35,7 +36,7 @@ public class Main {
       final Runner runner = new Runner(inDir);
       testSuites.forEach((k, v) -> {
         try {
-          runner.writeToFile(outDir, k, v);
+          runner.writeToFile(outDir, k, v, date);
         } catch (final IOException e) {
           e.printStackTrace();
         }
