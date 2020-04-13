@@ -3,6 +3,7 @@ package tomida.data;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.swing.SizeRequirements;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
@@ -51,8 +52,8 @@ public class TestSuite {
   }
 
   public int getHeadcount() {
-    final String classname = getClassname();
-    return Integer.parseInt(classname.split("_")[2]);
+    final String packageName = name.split("\\.")[0];
+    return Integer.parseInt(packageName.split("_")[4]);
   }
 
   public boolean isSucceeded() {
